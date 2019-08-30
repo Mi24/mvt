@@ -30,24 +30,37 @@
       maxNativeZoom: 18
     }).addTo(map);
 
-<!--
-    Document:http://leaflet.github.io/Leaflet.VectorGrid/vectorgrid-api-docs.html#vectorgrid-protobuf
-    vectorTileLayerStylesはレイヤー毎のスタイルを指定
--->
-
     L.vectorGrid.protobuf("https://mi24.github.io/mvt/school/{z}/{x}/{y}.mvt", {
       attribution: "<a>sample_岡山県学校区</a>",
       maxNativeZoom: 14,
       minNativeZoom: 8,
+      minZoom: 9,
       maxZoom: 18,
       rendererFactory: L.canvas.tile,
       vectorTileLayerStyles: {
         "school_map33": {
-          color: "red",
+          color: "blue",
           weight: 1
         }
       }
     }).addTo(map);
+
+<!--//
+//    L.vectorGrid.protobuf("https://tiles.datacradle.jp/tochi_riyou/{z}/{x}/{y}.mvt", {
+//      attribution: "<a>sample_土地利用</a>",
+//      maxNativeZoom: 10,
+//      minNativeZoom: 6,
+//      minZoom: 9,
+//      maxZoom: 18,
+//      rendererFactory: L.canvas.tile,
+//      vectorTileLayerStyles: {
+//        "tochi_riyou": {
+//          color: "blue",
+//          weight: 1
+//        }
+//      }
+//    }).addTo(map);
+//-->
   </script>
 </body>
 
