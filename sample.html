@@ -6,12 +6,12 @@
   <title>Hello L.VectorGrid.Protobuf</title>
   <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-   crossorigin=""/>
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />
   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-   integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-   crossorigin=""></script>
-   <script src="https://unpkg.com/leaflet.vectorgrid@latest/dist/Leaflet.VectorGrid.bundled.js"></script>
+    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+    crossorigin=""></script>
+  <script src="https://unpkg.com/leaflet.vectorgrid@latest/dist/Leaflet.VectorGrid.bundled.js"></script>
 </head>
 
 <body>
@@ -23,14 +23,22 @@
       center: [34.8624, 133.9125]
     });
 
-    <!-- 国土地理院のタイル -->
+    <!--国土地理院のタイル-- >
     L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg', {
       attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>",
       minZoom: 8,
       maxNativeZoom: 18
     }).addTo(map);
 
-    L.vectorGrid.protobuf("https://mi24.github.io/mvt/school/{z}/{x}/{y}.mvt", {
+//<!--5万分の1　地質図幅https://www.gsj.jp/Map/JP/geology4-12.html#12019 -->
+    L.tileLayer("https://tiles.datacradle.jp/daisen/{z}/{x}/{y}.png", {
+      attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>",
+      minZoom: 8,
+      maxNativeZoom: 18
+    }).addTo(map);
+
+
+    L.vectorGrid.protobuf("https://tiles.datacradle.jp/school/{z}/{x}/{y}.mvt", {
       attribution: "<a>sample_岡山県学校区</a>",
       maxNativeZoom: 14,
       minNativeZoom: 8,
@@ -45,22 +53,6 @@
       }
     }).addTo(map);
 
-<!--//
-//    L.vectorGrid.protobuf("https://tiles.datacradle.jp/tochi_riyou/{z}/{x}/{y}.mvt", {
-//      attribution: "<a>sample_土地利用</a>",
-//      maxNativeZoom: 10,
-//      minNativeZoom: 6,
-//      minZoom: 9,
-//      maxZoom: 18,
-//      rendererFactory: L.canvas.tile,
-//      vectorTileLayerStyles: {
-//        "tochi_riyou": {
-//          color: "blue",
-//          weight: 1
-//        }
-//      }
-//    }).addTo(map);
-//-->
   </script>
 </body>
 
